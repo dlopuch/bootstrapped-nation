@@ -12,7 +12,19 @@ module.exports = function(grunt) {
       '<%= pkg.homepage ? "* " + pkg.homepage + "\\n" : "" %>' +
       '* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author %>;' +
       ' Licensed <%= pkg.license %> */\n',
-    // Task configuration.
+
+
+    // Task configurations
+    //---------------------
+    copy: {
+      user_css: {
+        src: 'user_css/*',
+        dest: 'dist/',
+        expand: true,
+        flatten: true,
+        filter: 'isFile'
+      }
+    },
     concat: {
 
       /* scss_boostrap concat subtask: Concat all Bootstrap Sass files into a single file.
@@ -32,9 +44,11 @@ module.exports = function(grunt) {
           stripBanners: true
         },
         nonull: true,
+        dest: 'dist/bootstrap_concat.scss',
 
         // Here we reproduce bootstrap.scss, but instead of @imports we specify the files to concat manually
-        // (If bootstrap ever changes file structure, this will have to be updated!  Should match Bootstrap 3.1)
+        // (If bootstrap ever changes file structure, this will have to be updated!
+        //  As of time of writing, matches Bootstrap 3.1)
         src: [
               // Core variables and mixins
               '<%= bootstrapPath %>/_variables.scss',
@@ -86,8 +100,7 @@ module.exports = function(grunt) {
               // Utility classes
               '<%= bootstrapPath %>/_utilities.scss',
               '<%= bootstrapPath %>/_responsive-utilities.scss'
-             ],
-        dest: 'dist/bootstrap_concat.scss'
+             ]
       },
     },
     uglify: {
@@ -113,6 +126,7 @@ module.exports = function(grunt) {
 
   // These plugins provide necessary tasks.
   grunt.loadNpmTasks('grunt-contrib-concat');
+  grunt.loadNpmTasks('grunt-contrib-copy');
   //grunt.loadNpmTasks('grunt-contrib-uglify');
   //grunt.loadNpmTasks('grunt-contrib-nodeunit');
   //grunt.loadNpmTasks('grunt-contrib-jshint');
@@ -120,6 +134,6 @@ module.exports = function(grunt) {
 
   // Default task.
   //grunt.registerTask('default', ['jshint', 'nodeunit', 'concat', 'uglify']);
-  grunt.registerTask('default', ['concat']);
+  grunt.registerTask('default', ['concat', 'copy']);
 
 };

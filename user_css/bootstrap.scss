@@ -1,0 +1,6 @@
+// This is the top-level Bootstrap file to be referenced in your NationBuilder template.
+// NationBuilder will run this file through their internal Sass compiler.
+// It applies your theme overrides before bringing in Bootstrap, resulting in a Bootstrap build tailored to your brand.
+
+@import "bootstrap_user_variables.scss";
+@import "bootstrap_concat.scss"; // Concatenation of all Bootstrap Sass files, created by Grunt.

@@ -1,0 +1,19 @@
+// Edit this file to include your brand-specific Bootstrap variable overrides or theme.
+// This file gets fed into the NationBuilder Sass compiler, resulting in a Bootstrap build customized for your brand.
+// See ./bootstrap.scss for details on build order.
+
+// Refer to /bower_components/bootstrap-sass-official/vendor/assets/styleshseets/bootstrap/_variables.scss or
+// Bootstrap themeing documentation for what you can specify here.
+
+// Build notes:
+// All files in this /user_css/ folder will be copied over into /dist/ by the Grunt build.  Feel free to @import
+// anything you want (the NationBuilder Sass compiler will follow it), but remember that NationBuilder doesn't allow
+// for subdirectories, so the file structure must be flat.
+
+
+// Example theme overrides:
+$brand-primary:         #600000; // Note that everything in the Bootstrap _variables.scss file use the "!default" flag,
+$brand-success:         #78A830; // meaning they'll only use that value if the variable hasn't already been defined.
+$brand-info:            #D8D860; // This user file is evaluated BEFORE the Bootstrap distro is, so by defining variables
+$brand-warning:         #EEDE89; // like $brand-primary here, the Bootstrap distro values will be ignored.
+$brand-danger:          #901800;
